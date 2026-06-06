@@ -4,9 +4,9 @@ void factorial(){
     int num = 0;
     printf("input a number and we'll tell you its factorial: "); 
     scanf("%d", &num); 
-    for (int i = num - 1; i != 1; i--)
+    for (int n = num - 1; n != 1; n--)
     {
-        num *= i;
+        num *= n;
     }
 
     printf("%d", num);
