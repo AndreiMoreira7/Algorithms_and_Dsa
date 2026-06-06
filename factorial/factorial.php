@@ -1,4 +1,4 @@
-//using php web
+//I'm using PHP Web because I'm training it in the browser.
 
 <!DOCTYPE html>
 <html lang="en">
