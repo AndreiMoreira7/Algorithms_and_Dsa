@@ -3,9 +3,9 @@
 typedef struct{
     const char* name;
     long long seconds;
-}TimeUnit;
+}TimeUnit; 
 
-TimeUnit units[] = {
+TimeUnit units[] = { 
     {"year", 31536000LL},
     {"months", 2629800LL},
     {"weeks", 604800LL},
@@ -15,13 +15,13 @@ TimeUnit units[] = {
     {"seconds", 1LL}
 };
 
-void seconds_to_years(long long total_seconds){
-    int num_units = sizeof(units) / sizeof(units[0]);
-    long long values[num_units];
+void seconds_to_years(long long total_seconds){ 
+    int num_units = sizeof(units) / sizeof(units[0]); 
+    long long values[num_units]; 
 
     for(int i = 0; i < num_units; i++){
-        values[i] = total_seconds / units[i].seconds;
-        total_seconds %= units[i].seconds;
+        values[i] = total_seconds / units[i].seconds; 
+        total_seconds %= units[i].seconds; 
     }
 
     printf("[");
