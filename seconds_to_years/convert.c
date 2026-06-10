@@ -1,29 +1,43 @@
 #include <stdio.h>
 
-void seconds_to_years(){
-    int seconds, minutes, hours, days, months, years;
-    printf("input the seconds: ");
-    scanf("%d", &seconds);
+typedef struct{
+    const char* name;
+    long long seconds;
+}TimeUnit;
 
-    minutes = seconds / 60;
-    seconds = seconds - (minutes * 60);
-    hours = minutes / 60;
-    minutes = minutes - (hours * 60);
-    days = hours / 24;
-    hours = hours - (days * 24);
-    months = days / 30;
-    days = days - (months * 30);
-    years = months / 12;
-    months = months - (years * 12);
+TimeUnit units[] = {
+    {"year", 31536000LL},
+    {"months", 2629800LL},
+    {"weeks", 604800LL},
+    {"days", 86400LL},
+    {"hours", 3600LL},
+    {"minutes", 60LL},
+    {"seconds", 1LL}
+};
 
+void seconds_to_years(long long total_seconds){
+    int num_units = sizeof(units) / sizeof(units[0]);
+    long long values[num_units];
 
-    printf("[%d year(s): %d month(s): %d day(s): %d hour(s): %d minute(s): %d second(s)]", years, months, days, hours, minutes, seconds);
+    for(int i = 0; i < num_units; i++){
+        values[i] = total_seconds / units[i].seconds;
+        total_seconds %= units[i].seconds;
+    }
 
+    printf("[");
+    for(int i = 0; i < num_units; i++){
+        printf("%lld %s(s)%s", values[i], units[i].name, (i == num_units - 1) ? "" : ": ");
+    }
+    printf("]");
 }
 
 int main(){
+    long long input;
 
-    seconds_to_years();
+    printf("input the total seconds: ");
+    if(scanf("%lld", &input) == 1){
+        seconds_to_years(input);
+    }
 
     return 0;
 }
