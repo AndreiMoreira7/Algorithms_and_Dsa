@@ -1,22 +1,22 @@
 def average():
     vector = []
-    media = 0
+    res = 0
     
     while True:
         verify = input("(y) if you want to input a number on array, (n) else: ")
         
         if verify.lower() == "y":
-            num = (int(input("input some number on array: ")))
+            num = (int(input("input some number on list: ")))
             vector.append(num)
-            media += num
+            res += num
         elif verify.lower() == "n":
             break
         else:
             print("invalid option, please try again")
             
     if len(vector) != 0:
-        media /= len(vector)
-        print(f"the media is [{media}]")
+        res /= len(vector)
+        print(f"the list is {vector}, the media is [{res}]")
     else:
         print("no number was inserted")  
         
