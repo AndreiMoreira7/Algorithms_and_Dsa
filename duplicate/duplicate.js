@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const removeDuplicates = (arr) =>{
     arr = [...new Set(arr)]
     console.log(`the array without duplicates is [${arr}]`)
