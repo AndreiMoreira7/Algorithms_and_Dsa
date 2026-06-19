@@ -8,7 +8,7 @@ void is_palindrom(char word[]){
     int newLength = 0;
 
     for(int i = 0; i < length; i++){
-        if(word[i] != ' ' && word[i] != '\n'){
+        if(word[i] != ' ' && word[i] != '\n' && word[i] != ','){
             word[i] = tolower((unsigned char)word[i]);
             word[newLength++] = word[i];
         }
