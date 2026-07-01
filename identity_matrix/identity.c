@@ -15,11 +15,11 @@ void identify(int vector[][4], int length){
 
 int main(){
     int vector[4][4]= {
-        {1, 0, 1, 0},
+        {1, 0, 0, 0},
         {0, 1, 0, 0},
         {0, 0, 1, 0},
         {0, 0, 0, 1}
-    };
+    }; // just for test 
 
     int length = sizeof(vector) / sizeof(vector[0]); 
 
