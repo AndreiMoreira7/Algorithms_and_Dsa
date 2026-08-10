@@ -16,7 +16,14 @@
 function is_palindrome(){
     $word = $_POST['palindrome'];
     $word = str_replace(" ", "", $word);
-    echo $word;
+    $word = str_split($word);
+    $word_reverse = array_reverse($word);
+
+    if(array_change_key_case($word, CASE_LOWER) == array_change_key_case($word_reverse, CASE_LOWER)){
+        echo "is palindrome";
+        return;
+    }
+    echo "is not palindrome";
 }
 
 is_palindrome();
