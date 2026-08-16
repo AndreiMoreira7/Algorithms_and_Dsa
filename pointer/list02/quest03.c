@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#define TAMANHO 3
+#define TAMANHO 10
 
 typedef struct{
     int dia;
