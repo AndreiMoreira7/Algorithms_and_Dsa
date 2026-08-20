@@ -1,24 +1,21 @@
 #include <stdio.h>
 #include <string.h>
 
-void copiar(char *string1, char *string2, int tamanho_string){
-
-    for(int i = 0; i < tamanho_string; i++){
-        string2[i] = string1[i];
-    }
+void copiar(char *string1, char *string2){
+    while (*string1++ = *string2++);
 }
 
 int main(){
     char string1[50], string2[50];
-    int tamanho_string = 0;
 
     printf("Digite uma frase: ");
-    fgets(string1, sizeof(string1), stdin);
-    tamanho_string = strlen(string1) - 1;
+    fgets(string2, sizeof(string2), stdin);
 
-    copiar(&string1[0], &string2[0], tamanho_string);
+    string2[strcspn(string2, "\n")] = '\0';
 
-    printf("a frase que agora está em string2 é [%s]", string2);
+    copiar(&string1[0], &string2[0]);
+
+    printf("a frase que agora está em string1 é [%s]", string1);
 
     return 0;
 }
