@@ -4,8 +4,8 @@
 
 void vogais(char *p_frase, int tamanho_frase, int num_vogais){
     for(int i = 0; i < tamanho_frase; i++){
-        p_frase[i] = tolower(p_frase[i]);
-        if(p_frase[i] == 'a' || p_frase[i] == 'e' || p_frase[i] == 'i' || p_frase[i] == 'o' || p_frase[i] == 'u'){
+        *(p_frase + i) = tolower(*(p_frase + i));
+        if(*(p_frase + i) == 'a' || *(p_frase + i) == 'e' || *(p_frase + i) == 'i' || *(p_frase + i) == 'o' || *(p_frase + i) == 'u'){
             num_vogais++;
         }
     }
