@@ -33,7 +33,7 @@ bool estVazio(Estacionamento* est){
 void adicionarCarro(Estacionamento* est, char modelo[], char dono[], char placa[]){
 	Carro* novo = (Carro*) malloc (sizeof(Carro));
 	if(novo == NULL) {
-		printf("Erro ao alocar memÛria!"); 
+		printf("Erro ao alocar mem√≥ria!"); 
 		return;
 	}
 	
@@ -55,7 +55,7 @@ void adicionarCarro(Estacionamento* est, char modelo[], char dono[], char placa[
 }
 
 void removerCarro(Estacionamento* est, char placa[50]){
-	if(estVazio(est) == true) printf("Estacionamento vazio, n„o h· oque remover.");
+	if(estVazio(est) == true) printf("Estacionamento vazio, n√£o h√° oque remover.");
 	else{
 		int tamanhoInicial = est->total;
 		bool encontrado = false;
@@ -64,7 +64,7 @@ void removerCarro(Estacionamento* est, char placa[50]){
 			Carro* atual = est->inicio;
 			est->inicio = est->inicio->proximo;
 			
-			if(est->inicio == NULL) est->fim == NULL;
+			if(est->inicio == NULL) est->fim = NULL;
 			
 			if(strcmp(atual->placa, placa) == 0){
 				free(atual);
@@ -89,12 +89,12 @@ void removerCarro(Estacionamento* est, char placa[50]){
 			}
 		}
 		
-		if(!encontrado) printf("Carro de placa [%s] n„o foi encontrado", placa);
+		if(!encontrado) printf("Carro de placa [%s] n√£o foi encontrado", placa);
 	}
 }
 
 void imprimirCarros(Estacionamento* est){
-	if(estVazio(est) == true) printf("n„o h· carros para mostrar, o estacionamento est· vazio!");
+	if(estVazio(est) == true) printf("n√£o h√° carros para mostrar, o estacionamento est√° vazio!");
 	else{
 		Carro* atual = est->inicio;
 		printf("\n======= Lista de carros =======\n");
@@ -115,19 +115,19 @@ int main(){
 	
 	while(validarLoop == true){
 		printf("\n\n======== Estacionamento ========\n");
-		printf("1) Verificar se h· carros no estacionamento\n");
+		printf("1) Verificar se h√° carros no estacionamento\n");
 		printf("2) Adicionar Carro\n");
 		printf("3) Remover Carro\n");
 		printf("4) Imprimir Carros\n");
 		printf("5) Sair\n");
-		printf("Digite uma opÁ„o: ");
+		printf("Digite uma op√ß√£o: ");
 		scanf("%d", &opcao);
 		while(getchar() != '\n');
 		
 		switch(opcao){
 			case 1: 
-				if(estVazio(&est) == true) printf("O estacionamento est· vazio!");
-				else printf("H· carros no estacionamento");
+				if(estVazio(&est) == true) printf("O estacionamento est√° vazio!");
+				else printf("H√° carros no estacionamento");
 				break;
 			case 2: 
 				printf("Digite o nome do dono do Carro: ");
@@ -153,7 +153,7 @@ int main(){
 				break;
 			case 4: imprimirCarros(&est); break;
 			case 5: validarLoop = false; break;
-			default: printf("Digite uma opÁ„o v·lida!");
+			default: printf("Digite uma op√ß√£o v√°lida!");
 		}
 	}
 	

@@ -6,7 +6,7 @@ int main(){
 
     ptr = &num;
 
-    printf("o valor de num é %d\n o endereço de memoria de num é %p\nconteudo apontado por ptr é %d\no endereço apontado por ptr é %p", num, &num, *ptr, ptr);
+    printf("o valor de num é %d\n o endereço de memoria de num é %p\nconteudo apontado por ptr é %d\no endereço apontado por ptr é %p\nendereço do ptr é %p", num, &num, *ptr, ptr, &ptr);
 
     return 0;
 }
