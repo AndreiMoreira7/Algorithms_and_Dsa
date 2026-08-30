@@ -3,111 +3,113 @@
 #include <stdlib.h>
 
 typedef struct No{
-    int data;
-    struct No *prox;
+	int dado;
+	struct No* proximo;	
 }No;
 
 typedef struct{
-    No *inicio;
-    No *fim;
+	No* inicio;
+	No* fim;
 }Fila;
 
-void inicializar(Fila *fila){
-    fila->inicio = NULL;
-    fila->fim = NULL; 
+void inicializar(Fila *f){
+	f->inicio = NULL;
+	f->fim = NULL;
 }
 
-bool filaVazia(Fila *fila){
-    return fila->inicio == NULL;
+bool filaVazia(Fila* f){
+	return f->inicio == NULL;
 }
 
-void enfileirar(Fila *fila, int valor){
-    No *novo = (No*) malloc (sizeof(No)); 
-    novo->data = valor;
-    novo->prox = NULL;
-
-    if(filaVazia(fila)){
-        fila->inicio = novo;
-        fila->fim = novo; 
-    }
-    else{
-        fila->fim->prox = novo;
-        fila->fim = novo;
-    }
+void enfileirar(Fila* f, int valor){
+	No* novo = (No*) malloc (sizeof(No));
+	novo->dado = valor;
+	novo->proximo = NULL;
+	
+	if(filaVazia(f)){
+		f->inicio = novo;
+		f->fim = novo;
+	}
+	else{
+		f->fim->proximo = novo;
+		f->fim = novo;
+	}
 }
 
-void desenfileirar(Fila *fila){
-    if(filaVazia(fila)){
-        printf("n√£o h√° oque remover, a fila est√° vazia");
-    }
-    else{
-        No* aux = fila->inicio;
-        fila->inicio = fila->inicio->prox;
-        free(aux);
-        if(fila->inicio == NULL){
-            fila->fim = NULL;
-        }
-    }
+void desenfileirar(Fila* f){
+	if(filaVazia(f) == true)printf("N„o h· elementos para desenfileirar"); 
+	else{
+		No* aux = f->inicio;
+		f->inicio = f->inicio->proximo;
+		free(aux);
+		if(f->inicio == NULL){
+			f->fim = NULL;
+		}
+	}
 }
 
-void imprimir(Fila *fila){
-    if(filaVazia(fila) == true){
-        printf("Fila vazia, n√£o h√° oque imprimir");
-    }
-    else{
-        No * atual = fila->inicio;
-        while(atual != NULL){
-            printf("[%d] ", atual->data);
-            atual = atual->prox;
-        }
-    }
+void imprimir(Fila* f){
+	if(filaVazia(f) == true)printf("n„o h· oque imprimir");
+	else{
+		No* atual = f->inicio;
+		while(atual != NULL){	
+			printf("[%d] ", atual->dado);
+			atual = atual->proximo;
+		}
+	}
 }
 
-void obter_frente(Fila *fila){
-    if(fila->inicio == NULL){
-        printf("n√£o h√° elementos para mostrar!\n");
-    }
-    else{
-        printf("[%d]", fila->inicio->data);
-    }
+void obterFrente(Fila* f){
+	if(filaVazia(f) == true)printf("N„o h· oque obter, a fila est· vazia");
+	else printf("[%d]", f->inicio->dado);
 }
 
-
+void destruirFila(Fila* f){
+	if(filaVazia(f) == true)printf("n„o h· oque destruir, a fila est· vazia");
+	else{
+		while(f->inicio != NULL){
+			No* aux = f->inicio;
+			f->inicio = f->inicio->proximo;
+			free(aux);
+		}
+	}
+}
 int main(){
-    Fila fila;
-    inicializar(&fila);
-    int opcao = 0, valor = 0;
-    bool validar = true;
+	Fila fila;
+	inicializar(&fila);
+	int valor = 0, opcao = 0;
+	bool validarLoop = true;
+	
+	while(validarLoop == true){
+		printf("\n\n========= Menu =========\n");
+		printf("1) Verificar se a fila est· vazia\n");
+		printf("2) Enfileirar\n");
+		printf("3) Desenfileirar\n");
+		printf("4) Obter frente\n");
+		printf("5) Imprimir lista completa\n");
+		printf("6) Sair\n");
+		printf("7) Destruir Fila inteira\n");
+		printf("Digite a sua opÁ„o: ");
+		scanf("%d", &opcao);
+		
+		switch(opcao){
+			case 1: 
+				if(filaVazia(&fila) == true) printf("A fila est· vazia.");
+				else printf("H· elementos na fila");
+				break;
+			case 2: 
+				printf("Digite o valor a ser enfileirado: ");
+				scanf("%d", &valor);
+				enfileirar(&fila, valor);
+				break;
+			case 3: desenfileirar(&fila); break;
+			case 4: obterFrente(&fila); break;
+			case 5: imprimir(&fila); break; 
+			case 6: validarLoop = false; break;
+			case 7: destruirFila(&fila); break;
+			default: printf("OpÁ„o invalida, tente novamente"); break;
+		}
+	} 
 
-    while(validar == true){
-        printf("\n======= Digite uma op√ß√£o =======\n1. Verificar se a fila est√° vazia\n2. Obter frente\n3. Enfileirar\n4. Desenfileirar\n5. Imprimir\n6. Sair\n:");
-        scanf("%d", &opcao);
-
-        switch(opcao){
-            case 1: 
-                if(filaVazia(&fila) == true){printf("A fila est√° vazia");}
-                else{printf("N√£o est√° vazia");}
-                break;
-            case 2:
-                obter_frente(&fila);
-                break;
-            case 3:
-                printf("Digite o n√∫mero a ser enfileirado: ");
-                scanf("%d", &valor);
-                enfileirar(&fila, valor);
-                break;
-            case 4:
-                desenfileirar(&fila);
-                break;
-            case 5:
-                imprimir(&fila);
-                break;
-            case 6:
-                validar = false;
-            default:
-                printf("o n√∫mero digitado n√£o condiz as op√ß√µes");
-        }
-    }
-
-    return 0;
+return 0;
 }
