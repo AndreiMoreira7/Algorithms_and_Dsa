@@ -66,13 +66,11 @@ void removerCarro(Estacionamento* est, char placa[50]){
 			
 			if(est->inicio == NULL) est->fim = NULL;
 			
-			if(strcmp(atual->placa, placa) == 0){
+			if(!encontrado && strcmp(atual->placa, placa) == 0){
 				free(atual);
 				est->total--;
-				
 				printf("Carro de placa [%s] encontrado e liberado!\n", placa);
 				encontrado = true;
-				break;
 			}
 			else{
 				atual->proximo = NULL;

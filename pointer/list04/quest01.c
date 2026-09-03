@@ -32,7 +32,7 @@ void inicializarFluxo(Fluxo* f, int id){
 
 void enfileirarFluxo(Fluxo* f, int dado){
 	No* novo = (No*) malloc (sizeof(No));
-	if(novo == NULL){ printf("Erro ao alocar memória!"); exit(EXIT_FAILURE);}
+	if(novo == NULL){ printf("Erro ao alocar memÃ³ria!"); exit(EXIT_FAILURE);}
 	
 	novo->dado = dado;
 	novo->proximo = NULL;
@@ -40,12 +40,12 @@ void enfileirarFluxo(Fluxo* f, int dado){
 	if(f->inicio == NULL){
 		f->inicio = novo;
 		f->fim = novo;
-		printf("Primeiro Nó alocado com sucesso!\n");
+		printf("Primeiro NÃ³ alocado com sucesso!\n");
 	}
 	else{
 		f->fim->proximo = novo;
 		f->fim = novo;
-		printf("Mais um Nó alocado com sucesso!\n");
+		printf("Mais um NÃ³ alocado com sucesso!\n");
 	}
 }
 
@@ -56,7 +56,7 @@ void lerDados(Fluxo* f){
 	int i = 0, valor = 0;
 	
 	while(!parar){
-		printf("\nDigite o valor que ficará no Nó %d do Fluxo %d: ", i, f->id);
+		printf("\nDigite o valor que ficarÃ¡ no NÃ³ %d do Fluxo %d: ", i, f->id);
 		scanf("%d", &valor);
 		
 		if(valor != -1){
@@ -68,7 +68,7 @@ void lerDados(Fluxo* f){
 }
 
 void imprimirFluxo(Fluxo* f){
-	if(f->inicio == NULL) printf("O fluxo %d está vazio!\n", f->id);
+	if(f->inicio == NULL) printf("O fluxo %d estÃ¡ vazio!\n", f->id);
 	else{
 		printf("\n\n======== Fluxo %d ========\n", f->id);
 		No* atual = f->inicio;
@@ -85,7 +85,7 @@ void inicializarCanal(Canal* c){
 }
 
 void desenfileirarFluxo(Fluxo* f){
-	if(f->inicio == NULL) printf("O fluxo %d está vazio, não há oque desenfileirar!", f->id);
+	if(f->inicio == NULL) printf("O fluxo %d estÃ¡ vazio, nÃ£o hÃ¡ oque desenfileirar!", f->id);
 	else{
 		No* aux = f->inicio;
 		f->inicio = f->inicio->proximo;
@@ -96,7 +96,7 @@ void desenfileirarFluxo(Fluxo* f){
 
 void enfileirarCanal(Canal* c, int id, int dado){
 	NoCanal* novo = (NoCanal*) malloc (sizeof(NoCanal));
-	if(novo == NULL) {printf("Falha ao alocar memória!"); exit(EXIT_FAILURE);}
+	if(novo == NULL) {printf("Falha ao alocar memÃ³ria!"); exit(EXIT_FAILURE);}
 	
 	novo->dado = dado;
 	novo->id = id;
