@@ -37,7 +37,7 @@ void enfileirar(Fila* f, int valor){
 }
 
 void desenfileirar(Fila* f){
-	if(filaVazia(f) == true)printf("Não há elementos para desenfileirar"); 
+	if(filaVazia(f) == true)printf("Nï¿½o hï¿½ elementos para desenfileirar"); 
 	else{
 		No* aux = f->inicio;
 		f->inicio = f->inicio->proximo;
@@ -49,7 +49,7 @@ void desenfileirar(Fila* f){
 }
 
 void imprimir(Fila* f){
-	if(filaVazia(f) == true)printf("não há oque imprimir");
+	if(filaVazia(f) == true)printf("nï¿½o hï¿½ oque imprimir");
 	else{
 		No* atual = f->inicio;
 		while(atual != NULL){	
@@ -60,12 +60,12 @@ void imprimir(Fila* f){
 }
 
 void obterFrente(Fila* f){
-	if(filaVazia(f) == true)printf("Não há oque obter, a fila está vazia");
+	if(filaVazia(f) == true)printf("Nï¿½o hï¿½ oque obter, a fila estï¿½ vazia");
 	else printf("[%d]", f->inicio->dado);
 }
 
 void destruirFila(Fila* f){
-	if(filaVazia(f) == true)printf("não há oque destruir, a fila está vazia");
+	if(filaVazia(f) == true)printf("nï¿½o hï¿½ oque destruir, a fila estï¿½ vazia");
 	else{
 		while(f->inicio != NULL){
 			No* aux = f->inicio;
@@ -77,25 +77,25 @@ void destruirFila(Fila* f){
 int main(){
 	Fila fila;
 	inicializar(&fila);
-	int valor = 0, opcao = 0;
+	int valor = 0, opcao = 0;	
 	bool validarLoop = true;
 	
 	while(validarLoop == true){
 		printf("\n\n========= Menu =========\n");
-		printf("1) Verificar se a fila está vazia\n");
+		printf("1) Verificar se a fila estï¿½ vazia\n");
 		printf("2) Enfileirar\n");
 		printf("3) Desenfileirar\n");
 		printf("4) Obter frente\n");
 		printf("5) Imprimir lista completa\n");
 		printf("6) Sair\n");
 		printf("7) Destruir Fila inteira\n");
-		printf("Digite a sua opção: ");
+		printf("Digite a sua opï¿½ï¿½o: ");
 		scanf("%d", &opcao);
 		
 		switch(opcao){
 			case 1: 
-				if(filaVazia(&fila) == true) printf("A fila está vazia.");
-				else printf("Há elementos na fila");
+				if(filaVazia(&fila) == true) printf("A fila estï¿½ vazia.");
+				else printf("Hï¿½ elementos na fila");
 				break;
 			case 2: 
 				printf("Digite o valor a ser enfileirado: ");
@@ -107,7 +107,7 @@ int main(){
 			case 5: imprimir(&fila); break; 
 			case 6: validarLoop = false; break;
 			case 7: destruirFila(&fila); break;
-			default: printf("Opção invalida, tente novamente"); break;
+			default: printf("Opï¿½ï¿½o invalida, tente novamente"); break;
 		}
 	} 
 
