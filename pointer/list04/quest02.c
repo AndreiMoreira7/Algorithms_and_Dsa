@@ -41,7 +41,7 @@ bool filaVazia(Fila* fila){
 
 void enfileirar(Fila* fila, int idade, char nome[], char pcdOuGest[], int senha){
 	No* novo = (No*) malloc (sizeof(No));
-	if(novo == NULL){printf("Erro ao alocar memÛria!"); exit(EXIT_FAILURE);}
+	if(novo == NULL){printf("Erro ao alocar mem√≥ria!"); exit(EXIT_FAILURE);}
 	
 	novo->idade = idade;
 	novo->senha = senha;
@@ -72,7 +72,7 @@ void alocarNaFila(Fila* n, Fila* p, Fila* pp){
 	scanf("%d", &idade);
 	while(getchar() != '\n');
 	
-	printf("O cliente È PCD ou Gestante? [sim] ou  [n„o]: ");
+	printf("O cliente √© PCD ou Gestante? [sim] ou  [n√£o]: ");
 	fgets(pcdOuGest, sizeof(pcdOuGest), stdin);
 	limparQuebraLinha(pcdOuGest);
 	converterMinuscula(pcdOuGest);
@@ -93,11 +93,11 @@ void alocarNaFila(Fila* n, Fila* p, Fila* pp){
 }
 
 void imprimir(Fila* fila){
-	if(filaVazia(fila) == true) printf("A fila est· vazia!\n");
+	if(filaVazia(fila) == true) printf("A fila est√° vazia!\n");
 	else{
 		No* aux = fila->inicio;
 		while(aux != NULL){
-			printf("Nome: %s | idade: %d | … pcd ou gestante?: %s | Senha: %d\n", aux->nome, aux->idade, aux->pcdOuGest, aux->senha);
+			printf("Nome: %s | idade: %d | √© pcd ou gestante?: %s | Senha: %d\n", aux->nome, aux->idade, aux->pcdOuGest, aux->senha);
 			aux = aux->proximo;
 		}
 	}
@@ -115,7 +115,7 @@ void ordemFilas(Fila* n, Fila* p, Fila* pp){
 }
 
 void ordemChamada(Fila* c, Fila* n, Fila* p, Fila* pp){
-	if(filaVazia(n) == true && filaVazia(p) == true && filaVazia(pp) == true) printf("Todas as filas est„o vazias!");
+	if(filaVazia(n) == true && filaVazia(p) == true && filaVazia(pp) == true) printf("Todas as filas estÔøΩo vazias!");
 	else{
 	No* auxpp = pp->inicio;
 	No* auxn = n->inicio;
@@ -136,10 +136,13 @@ void ordemChamada(Fila* c, Fila* n, Fila* p, Fila* pp){
 				enfileirar(c, auxn->idade, auxn->nome, auxn->pcdOuGest, c->tamanho + 1);
 				auxn = auxn->proximo;
 			}  
+		}
  	}
 }
 
 void imprimirOrdem(Fila* c, Fila* n, Fila* p, Fila* pp){
+	inicializar(&c);
+
 	printf("\n========== Ordem de chamada para atendimento ==========\n");
 	ordemChamada(c, n, p, pp);
 	imprimir(c);
@@ -157,12 +160,12 @@ int main(){
 	bool validarLoop = true;
 	
 	while(validarLoop){
-		printf("\n\n========== Fila Banc·ria ==========\n");
+		printf("\n\n========== Fila Banc√°ria ==========\n");
 		printf("1) Alocar cliente na fila\n");
 		printf("2) Imprimir filas\n");
 		printf("3) Imprimir ordem de chamada\n");
 		printf("4) Sair\n");
-		printf("Escolha uma opÁ„o: ");
+		printf("Escolha uma op√ß√£o: ");
 		scanf("%d", &opcao);
 		while(getchar() != '\n');
 		
@@ -171,7 +174,7 @@ int main(){
 			case 2: ordemFilas(&normal, &prioridade, &maisPrioridade); break;
 			case 3: imprimirOrdem(&chamada, &normal, &prioridade, &maisPrioridade); break;
 			case 4: validarLoop = false; break;
-			default: printf("OpÁ„o inv·lida, tente novamente!");
+			default: printf("Op√ß√£o inv√°lida, tente novamente!");
 		}
 	}
 	
