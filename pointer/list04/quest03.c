@@ -31,7 +31,7 @@ bool trajetoVazio(Trajeto* trajeto){
 
 void enfileirar(Trajeto* trajeto, char cidade[], float distancia){
 	Cidade* nova = (Cidade*) malloc (sizeof(Cidade));
-	if(nova == NULL){ printf("Erro ao alocar memória!"); exit(EXIT_FAILURE);}
+	if(nova == NULL){ printf("Erro ao alocar memÃ³ria!"); exit(EXIT_FAILURE);}
 	
 	strcpy(nova->nome, cidade);
 	nova->distancia = distancia;
@@ -64,7 +64,7 @@ void alocarCidade(Trajeto* trajeto){
 		fgets(nome, sizeof(nome), stdin);
 		limparQuebraLinha(nome);
 		
-		printf("Digite a distância em [km] da cidade anterior para a atual: ");
+		printf("Digite a distÃ¢ncia em [km] da cidade anterior para a atual: ");
 		scanf("%f", &distancia);
 		while(getchar() != '\n');
 		
@@ -73,7 +73,7 @@ void alocarCidade(Trajeto* trajeto){
 }
 
 void imprimirTrajeto(Trajeto* trajeto){
-	if(trajetoVazio(trajeto) == true) printf("Ainda não escolheu para onde viajar!");
+	if(trajetoVazio(trajeto) == true) printf("Ainda nÃ£o escolheu para onde viajar!");
 	else{
 		Cidade* aux = trajeto->origem;
 		float kmPercorrido = 0.0;
@@ -96,7 +96,7 @@ void imprimirTrajeto(Trajeto* trajeto){
 }
 
 void distanciaTotal(Trajeto* trajeto){
-	if(trajetoVazio(trajeto) == true || trajeto->numCidades == 1) printf("Ainda não saiu da cidade de Origem!");
+	if(trajetoVazio(trajeto) == true || trajeto->numCidades == 1) printf("Ainda nÃ£o saiu da cidade de Origem!");
 	else{
 		Cidade* aux = trajeto->origem;
 		float kmTotal = 0.0;
@@ -106,7 +106,7 @@ void distanciaTotal(Trajeto* trajeto){
 			aux = aux->proxima;
 		}
 	
-		printf("\nA distância total percorrida foi [%.2f]\n", kmTotal);
+		printf("\nA distÃ¢ncia total percorrida foi [%.2f]\n", kmTotal);
 	}
 }
 
@@ -123,9 +123,9 @@ int main(){
 		printf("\n============ VIAGEM =============\n");
 		printf("1) Colocar uma cidade na qual passou\n");
 		printf("2) Printar as cidades na qual passou\n");
-		printf("3) Printar a distância total da viagem\n");
+		printf("3) Printar a distÃ¢ncia total da viagem\n");
 		printf("4) Sair\n");
-		printf("Digite uma opção: ");
+		printf("Digite uma opÃ§Ã£o: ");
 		scanf("%d", &opcao);
 		while(getchar() != '\n');
 		
@@ -134,7 +134,7 @@ int main(){
 			case 2: imprimirTrajeto(&trajeto); break;
 			case 3: distanciaTotal(&trajeto); break;
 			case 4: validar = false; break;
-			default: printf("Digite uma opção válida!"); break;
+			default: printf("Digite uma opÃ§Ã£o vÃ¡lida!"); break;
 		}
 		
 	}
