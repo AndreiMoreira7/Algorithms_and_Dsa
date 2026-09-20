@@ -135,6 +135,7 @@ int main(){
 		printf("7) Inverter Fila\n");
 		printf("8) Esvaziar pilha\n");
 		printf("9) Menor valor\n");
+		printf("10) Sair\n");
 		printf("Digite uma opção: ");
 		scanf("%d", &opcao);
 		
@@ -156,6 +157,7 @@ int main(){
 			case 7: pilhaInvertida(&pilha); break;
 			case 8: esvaziarPilha(&pilha); break;
 			case 9: menorValor(&pilha); break;
+			case 10: validarLoop = false; break;
 			default: printf("Digite uma opção válida!"); break;
 		}
 	}

@@ -85,6 +85,7 @@ int main(){
 		printf("4) Imprimir\n");
 		printf("5) Consultar Topo\n");
 		printf("6) Imprimir quantidade de elementos\n");
+		printf("7) Sair\n");
 		printf("Digite uma opção: ");
 		scanf("%d", &opcao);
 		
@@ -103,6 +104,7 @@ int main(){
 			case 4: imprimir(&pilha); break;
 			case 5: consultarTopo(&pilha); break;
 			case 6: quantidadeElementos(&pilha); break;
+			case 7: validarLoop = false; break;
 			default: printf("Digite uma opção válida!"); break;
 		}
 	}

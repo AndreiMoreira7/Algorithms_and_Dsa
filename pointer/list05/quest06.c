@@ -5,17 +5,17 @@
 
 typedef struct No{
 	int dado;
-	struct No* proximo;
+	struct No* proximo;	
 }No;
 
 typedef struct{
-	int tamanho;
 	No* topo;
+	int tamanho;
 }Pilha;
 
 void inicializar(Pilha* pilha){
-	pilha->tamanho = 0;
 	pilha->topo = NULL;
+	pilha->tamanho = 0;
 }
 
 bool pilhaVazia(Pilha* pilha){
@@ -31,17 +31,18 @@ void empilhar(Pilha* pilha, int dado){
 	pilha->topo = novo;
 	pilha->tamanho++;
 	
-	printf("Elemento empilhado com sucesso!");	
+	printf("Elemento alocado com sucesso!");
 }
 
 void desempilhar(Pilha* pilha){
-	if(pilhaVazia(pilha) == true) printf("A pilha está vazia!");
+	if(pilhaVazia(pilha) == true) printf("A pilha está vazia");
 	else{
 		No* aux = pilha->topo;
 		pilha->topo = pilha->topo->proximo;
 		free(aux);
 		pilha->tamanho--;
-		printf("Elemento desempilhado com sucesso!");
+		
+		printf("Elemento excluido com sucesso!");
 	}
 }
 
@@ -57,16 +58,27 @@ void imprimir(Pilha* pilha){
 	}
 }
 
-void consultarTopo(Pilha* pilha){
+void maiorNumero(Pilha* pilha){
 	if(pilhaVazia(pilha) == true) printf("A pilha está vazia!");
 	else{
-		printf("O elemento do topo é [%d]", pilha->topo->dado);
+		No* aux = pilha->topo;
+		int maior = 0;
+		
+		while(aux != NULL){
+			if(maior < aux->dado){
+				maior = aux->dado;
+			}
+			
+			aux = aux->proximo;
+		}
+		
+		printf("O maior número é [%d]", maior);
 	}
 }
-	
+
 int main(){
 	setlocale(LC_ALL, "");
-
+	
 	Pilha pilha;
 	inicializar(&pilha);
 	
@@ -79,7 +91,7 @@ int main(){
 		printf("2) Empilhar\n");
 		printf("3) Desempilhar\n");
 		printf("4) Imprimir\n");
-		printf("5) Consultar Topo\n");
+		printf("5) Maior número\n");
 		printf("6) Sair\n");
 		printf("Digite uma opção: ");
 		scanf("%d", &opcao);
@@ -87,19 +99,18 @@ int main(){
 		switch(opcao){
 			case 1: 
 				if(pilhaVazia(&pilha) == true) printf("A pilha está vazia!");
-				else printf("Há elementos na pilha!");
-				break;
+				else printf("Há elementos na pilha!"); break;
 			case 2: 
-				printf("Digite o elemento que deseja empilhar: ");
+				printf("Digite o número que deseja empilhar: ");
 				scanf("%d", &dado);
 				
 				empilhar(&pilha, dado);
 				break;
 			case 3: desempilhar(&pilha); break;
 			case 4: imprimir(&pilha); break;
-			case 5: consultarTopo(&pilha); break;
+			case 5: maiorNumero(&pilha); break;
 			case 6: validarLoop = false; break;
-			default: printf("Digite uma opção válida!"); break;
+			default: printf("Opção inválida, tente novamente!"); break;
 		}
 	}
 	
